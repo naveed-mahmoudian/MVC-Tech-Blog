@@ -34,6 +34,22 @@ User.init(
         len: [8],
       },
     },
+    post_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "post",
+        key: "id",
+      },
+    },
+    comment_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: "comment",
+        key: "id",
+      },
+    },
   },
   {
     sequelize,
