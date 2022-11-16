@@ -17,10 +17,12 @@ const posts = [
   },
 ];
 
+// Homepage
 router.get("/", async (req, res) => {
   res.render("home", { posts, loggedIn: req.session.loggedIn });
 });
 
+// Load login from homepage
 router.get("/login", (req, res) => {
   if (req.session.loggedIn) {
     res.redirect("/");
@@ -29,6 +31,7 @@ router.get("/login", (req, res) => {
   res.render("login");
 });
 
+// Load signup from login page
 router.get("/signup", (req, res) => {
   res.render("signup");
 });
