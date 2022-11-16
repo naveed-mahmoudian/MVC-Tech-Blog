@@ -36,4 +36,13 @@ router.get("/signup", (req, res) => {
   res.render("signup");
 });
 
+// Dashboard
+router.get("/dashboard", async (req, res) => {
+  if (req.session.loggedIn) {
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
+    return;
+  }
+  res.redirect("/login");
+});
+
 module.exports = router;

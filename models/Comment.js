@@ -14,6 +14,7 @@ Comment.init(
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     text: {
       type: DataTypes.STRING,
@@ -24,14 +25,6 @@ Comment.init(
       allowNull: false,
       references: {
         model: "user",
-        key: "id",
-      },
-    },
-    post_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: "post",
         key: "id",
       },
     },

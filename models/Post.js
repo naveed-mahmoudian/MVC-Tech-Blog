@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, NOW } = require("sequelize");
 const sequelize = require("../config/connection");
 
 class Post extends Model {}
@@ -14,6 +14,7 @@ Post.init(
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
+      defaultValue: DataTypes.NOW,
     },
     title: {
       type: DataTypes.STRING,
@@ -28,14 +29,6 @@ Post.init(
       allowNull: false,
       references: {
         model: "user",
-        key: "id",
-      },
-    },
-    comment_id: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      references: {
-        model: "comment",
         key: "id",
       },
     },
