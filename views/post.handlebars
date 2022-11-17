@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="card mt-3">
+        <h5 class="card-header">{{post.title}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{post.text}}</h5>
+            <p class="card-text">{{post.user.username}} - {{post.date_created}}</p>
+        </div>
+    </div>
+    <hr>
+    <h3 class="text-center">Add a Comment</h3>
+        <form id="create-comment">
+        <div class="mb-3">
+            <textarea class="form-control" name="comment" id="comment" rows="2" placeholder="Comment..."></textarea>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-dark" id="create_comment">Submit</button>
+        </div>
+    </form>
+    <hr>
+    <h3 class="text-center">Comments</h3>
+</div>
+<script src="/js/comment.js"></script>

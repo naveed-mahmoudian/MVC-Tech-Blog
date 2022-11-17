@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Post = require("../../models/Post");
+const { User, Post, Comment } = require("../../models");
 
 // Create Post
 router.post("/", async (req, res) => {
@@ -15,6 +15,40 @@ router.post("/", async (req, res) => {
     }
 
     res.render("dashboard");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// Go to specific post
+router.get("/:id", async (req, res) => {
+  try {
+    if (!req.session.loggedIn) {
+      res.redirect("/login");
+    }
+
+    const postData = await Post.findOne({
+      where: { id: req.params.id },
+      include: [{ model: User, attributes: ["id", "username"] }],
+    });
+    const post = postData.get({ plain: true });
+    console.log(post);
+
+    res.render("post", { loggedIn: req.session.loggedIn, post });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+router.post("/comments", async (req, res) => {
+  try {
+    const newComment = await Comment.create({
+      comment: req.body.comment,
+    });
+
+    if (!newComment) {
+      res.status(400).json({ message: "Unable to create comment" });
+    }
   } catch (error) {
     res.status(500).json(error);
   }
