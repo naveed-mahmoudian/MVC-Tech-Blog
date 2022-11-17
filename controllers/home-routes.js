@@ -1,13 +1,16 @@
-// const Post = require("../models/Post");
-// const User = require("../models/User");
-
 const { User, Post, Comment } = require("../models");
 
 const router = require("express").Router();
 
 // Homepage
 router.get("/", async (req, res) => {
-  res.render("home", { loggedIn: req.session.loggedIn });
+  const postData = await Post.findAll({
+    include: [{ model: User, attributes: ["id", "username"] }],
+  });
+
+  const posts = postData.map((post) => post.get({ plain: true }));
+
+  res.render("home", { loggedIn: req.session.loggedIn, posts });
 });
 
 // Load login from homepage

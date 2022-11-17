@@ -1,5 +1,13 @@
 <div class="container mt-5">
+    <h3 class="text-center">All Posts</h3>
     {{#each posts as |post|}}
-    {{> posts}}
+    <div class="card mt-3">
+        <h5 class="card-header">{{post.title}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{post.text}}</h5>
+            <p class="card-text">{{post.user.username}} - {{post.date_created}}</p>
+            <a href="/posts/{{post.id}}" class="btn btn-secondary">Comment</a>
+        </div>
+    </div>
     {{/each}}
 </div>

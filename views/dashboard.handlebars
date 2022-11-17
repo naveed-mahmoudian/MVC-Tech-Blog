@@ -1,5 +1,5 @@
-<div class="container text-center mt-5">
-    <h2>Your Dashboard</h2>
+<div class="container mt-5">
+    <h2 class="text-center">Your Dashboard</h2>
     <form id="create-post">
         <div class="mb-3">
             <input type="text" class="form-control" name="title" id="title" placeholder="Title">
@@ -7,10 +7,12 @@
         <div class="mb-3">
             <textarea class="form-control" name="text" id="text" rows="3" placeholder="Text"></textarea>
         </div>
-        <button type="submit" class="btn btn-outline-dark" id="create_post">Create Post</button>
+        <div class="text-center">
+            <button type="submit" class="btn btn-outline-dark" id="create_post">Create Post</button>
+        </div>
     </form>
     <hr>
-    <h2>Your Posts</h2>
+    <h2 class="text-center">Your Posts</h2>
     {{#each posts as |post|}}
     <div class="card mt-3">
         <h5 class="card-header">{{post.title}}</h5>
