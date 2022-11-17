@@ -1,6 +1,6 @@
 <div class="container text-center mt-5">
     <h2>Your Dashboard</h2>
-    <form class="new-post">
+    <form id="create-post">
         <div class="mb-3">
             <input type="text" class="form-control" name="title" id="title" placeholder="Title">
         </div>
@@ -9,5 +9,17 @@
         </div>
         <button type="submit" class="btn btn-outline-dark" id="create_post">Create Post</button>
     </form>
+    <hr>
+    <h2>Your Posts</h2>
+    {{#each posts as |post|}}
+    <div class="card mt-3">
+        <h5 class="card-header">{{post.title}}</h5>
+    <div class="card-body">
+        <h5 class="card-title">{{post.text}}</h5>
+        <p class="card-text">{{post.user.username}} - {{post.date_created}}</p>
+        <a href="/posts/{{post.id}}" class="btn btn-secondary">Comment</a>
+    </div>
+    </div>
+    {{/each}}
 </div>
 <script src="/js/dashboard.js"></script>

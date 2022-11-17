@@ -1,23 +1,22 @@
 const createPost = async (e) => {
   e.preventDefault();
 
-  const title = document.getElementById("title");
-  const text = document.getElementById("title");
+  const title = document.getElementById("title").value;
+  const text = document.getElementById("text").value;
 
   if (title && text) {
-    const result = await fetch("/api/posts", {
+    const response = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({ title, text }),
       headers: {
         "Content-Type": "application/json",
       },
     });
-  }
-
-  if (result.ok) {
-    document.location.replace("/dashboard");
-  } else {
-    alert("Failed to create post!");
+    if (response.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert("Failed to create post!");
+    }
   }
 };
 

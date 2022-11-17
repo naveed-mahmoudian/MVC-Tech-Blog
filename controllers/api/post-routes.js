@@ -2,18 +2,22 @@ const router = require("express").Router();
 const Post = require("../../models/Post");
 
 // Create Post
-// router.post("/", async (req, res) => {
-//   const currentDate = new Date();
-//   const dateCreated = `${currentDate.getMonth() + 1}/${currentDate.getDate()}/${
-//     currentDate.getFullYear
-//   } - ${currentDate.getHours}:${currentDate.getMinutes()}`;
+router.post("/", async (req, res) => {
+  try {
+    const newPost = await Post.create({
+      title: req.body.title,
+      text: req.body.text,
+      user_id: req.session.user_id,
+    });
 
-//   const newPost = await Post.create({
-//     date_created: dateCreated,
-//     title: req.body.title,
-//     text: req.body.text,
-//     user_id: 1,
-//   });
-// });
+    if (!newPost) {
+      res.status(400).json({ message: "Unable to create post" });
+    }
+
+    res.render("dashboard");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;

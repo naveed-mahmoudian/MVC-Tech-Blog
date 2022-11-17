@@ -1,25 +1,13 @@
-const router = require("express").Router();
+// const Post = require("../models/Post");
+// const User = require("../models/User");
 
-const posts = [
-  {
-    id: 1,
-    date_created: "11/15/22",
-    title: "My First Post",
-    text: "This is my first post...WOW!",
-    username: "nav",
-  },
-  {
-    id: 2,
-    date_created: "11/16/22",
-    title: "My Second Post",
-    text: "This is my second post here!",
-    username: "nav",
-  },
-];
+const { User, Post, Comment } = require("../models");
+
+const router = require("express").Router();
 
 // Homepage
 router.get("/", async (req, res) => {
-  res.render("home", { posts, loggedIn: req.session.loggedIn });
+  res.render("home", { loggedIn: req.session.loggedIn });
 });
 
 // Load login from homepage
@@ -39,7 +27,16 @@ router.get("/signup", (req, res) => {
 // Dashboard
 router.get("/dashboard", async (req, res) => {
   if (req.session.loggedIn) {
-    res.render("dashboard", { loggedIn: req.session.loggedIn });
+    const postData = await Post.findAll({
+      where: { user_id: req.session.user_id },
+      include: [{ model: User, attributes: ["id", "username"] }],
+    });
+
+    const userPosts = postData.map((post) => post.get({ plain: true }));
+    const posts = userPosts.reverse();
+
+    console.log(posts);
+    res.render("dashboard", { loggedIn: req.session.loggedIn, posts });
     return;
   }
   res.redirect("/login");
