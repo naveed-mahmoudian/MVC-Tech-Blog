@@ -29,7 +29,10 @@ router.get("/:id", async (req, res) => {
 
     const postData = await Post.findOne({
       where: { id: req.params.id },
-      include: [{ model: User, attributes: ["id", "username"] }],
+      include: [
+        { model: User, attributes: ["id", "username"] },
+        { model: Comment, include: [{ model: User }] },
+      ],
     });
     const post = postData.get({ plain: true });
     console.log(post);
@@ -43,12 +46,16 @@ router.get("/:id", async (req, res) => {
 router.post("/comments", async (req, res) => {
   try {
     const newComment = await Comment.create({
-      comment: req.body.comment,
+      text: req.body.comment,
+      user_id: req.session.user_id,
+      post_id: req.body.post_id,
     });
 
     if (!newComment) {
       res.status(400).json({ message: "Unable to create comment" });
     }
+
+    res.end();
   } catch (error) {
     res.status(500).json(error);
   }

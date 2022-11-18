@@ -18,5 +18,13 @@
     </form>
     <hr>
     <h3 class="text-center">Comments</h3>
+    {{#each post.comments}}
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title">{{text}}</h5>
+            <p class="card-text">{{user.username}} - {{date_created}}</p>
+        </div>
+    </div>
+    {{/each}}
 </div>
 <script src="/js/comment.js"></script>
