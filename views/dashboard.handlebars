@@ -14,12 +14,14 @@
     <hr>
     <h2 class="text-center">Your Posts</h2>
     {{#each posts as |post|}}
-    <div class="card mt-3">
-        <h5 class="card-header">{{post.title}}</h5>
+    <div class="card mt-3" id="post-{{post.id}}">
+        <h5 class="card-header" id="post-title-{{post.id}}">{{post.title}}</h5>
     <div class="card-body">
-        <h5 class="card-title">{{post.text}}</h5>
+        <h5 class="card-title" id="post-text-{{post.id}}">{{post.text}}</h5>
         <p class="card-text">{{post.user.username}} - {{post.date_created}}</p>
         <a href="api/posts/{{post.id}}" class="btn btn-secondary">Comment</a>
+        <a class="btn btn-secondary" id="edit-post" data-post-id="{{post.id}}">Edit</a>
+        <a href="api/posts/delete/{{post.id}}" class="btn btn-danger" id="delete-post">Delete</a>
     </div>
     </div>
     {{/each}}

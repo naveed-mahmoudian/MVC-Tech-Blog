@@ -43,6 +43,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Create Comment
 router.post("/comments", async (req, res) => {
   try {
     const newComment = await Comment.create({
@@ -60,5 +61,25 @@ router.post("/comments", async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+// Edit Post
+router.put("/edit/:id", async (req, res) => {
+  try {
+    const updatedPost = await Post.update(
+      {
+        title: req.body.title,
+        text: req.body.text,
+        user_id: req.session.user_id,
+      },
+      { where: { id: req.params.id } }
+    );
+    res.status(200).render("dashboard");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
+
+// Delete Post
+router.delete("/delete/:id", async (req, res) => {});
 
 module.exports = router;
