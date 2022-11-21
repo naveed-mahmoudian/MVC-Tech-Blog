@@ -80,6 +80,21 @@ router.put("/edit/:id", async (req, res) => {
 });
 
 // Delete Post
-router.delete("/delete/:id", async (req, res) => {});
+router.delete("/delete/:id", async (req, res) => {
+  try {
+    await Comment.destroy({
+      where: { post_id: req.params.id },
+    });
+
+    const deletedPost = await Post.destroy({ where: { id: req.params.id } });
+    if (!deletedPost) {
+      res.status(400).json({ message: "Unable to delete post" });
+    }
+
+    res.status(200).render("dashboard");
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;

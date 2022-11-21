@@ -13,6 +13,7 @@
     </form>
     <hr>
     <h2 class="text-center">Your Posts</h2>
+    <div id="your-posts">
     {{#each posts as |post|}}
     <div class="card mt-3" id="post-{{post.id}}">
         <h5 class="card-header" id="post-title-{{post.id}}">{{post.title}}</h5>
@@ -21,9 +22,10 @@
         <p class="card-text">{{post.user.username}} - {{post.date_created}}</p>
         <a href="api/posts/{{post.id}}" class="btn btn-secondary">Comment</a>
         <a class="btn btn-secondary" id="edit-post" data-post-id="{{post.id}}">Edit</a>
-        <a href="api/posts/delete/{{post.id}}" class="btn btn-danger" id="delete-post">Delete</a>
+        <a class="btn btn-danger" id="delete-post" data-post-id="{{post.id}}">Delete</a>
     </div>
     </div>
     {{/each}}
+    </div>
 </div>
 <script src="/js/dashboard.js"></script>
