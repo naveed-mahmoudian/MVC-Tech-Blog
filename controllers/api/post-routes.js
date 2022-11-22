@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
       res.status(400).json({ message: "Unable to create post" });
     }
 
-    res.render("dashboard");
+    res.render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -73,7 +73,7 @@ router.put("/edit/:id", async (req, res) => {
       },
       { where: { id: req.params.id } }
     );
-    res.status(200).render("dashboard");
+    res.status(200).render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (error) {
     res.status(500).json(error);
   }
@@ -91,7 +91,7 @@ router.delete("/delete/:id", async (req, res) => {
       res.status(400).json({ message: "Unable to delete post" });
     }
 
-    res.status(200).render("dashboard");
+    res.status(200).render("dashboard", { loggedIn: req.session.loggedIn });
   } catch (error) {
     res.status(500).json(error);
   }
