@@ -6,9 +6,12 @@
 
 This application is a CMS-style blog site where anyone can sign up for an account and publish blog posts. It utilizes the MVC (Model, View, Controller) framework and uses Node.js, Express.js, Handlebars.js, express-sessions, and Sequelize ORM. This application also allows other users to comment on your posts. The owner of the post can also edit, comment, or delete their post.
 
+[Click Here for GitHub Repo](https://github.com/naveed-mahmoudian/MVC-Tech-Blog)
+
 ## Table of Contents
 
 - [Usage](#usage)
+- [Screenshots](#screenshots)
 - [License](#license)
 - [Credits](#credits)
 - [Questions](#questions)
@@ -17,9 +20,15 @@ This application is a CMS-style blog site where anyone can sign up for an accoun
 
 [Click Here for Deployed Application](https://naveedtechblog.herokuapp.com/)
 
-[Click Here for GitHub Repo](https://github.com/naveed-mahmoudian/MVC-Tech-Blog)
-
 When you visit the homepage of the Tech Blog, you'll be able to see all blog posts posted by the various users of the application. If you try to visit your dashboard without being logged in, you will be redirected to the login page. If you do not have an account you can click the `Sign Up` button on the login page. When you are logged in you will be redirected to your dashboard and can create, edit, or delete your posts from there. To comment on a post, simply click the `Comment` button on the respective post and you'll be redirected to that specific posts's page where you can leave a comment and view other users comments.
+
+## Screenshots
+
+![Homepage](./public/images/homepage.png)
+
+![Dashboard](./public/images/dashboard.png)
+
+![Comment](./public/images/comment.png)
 
 ## License
 
