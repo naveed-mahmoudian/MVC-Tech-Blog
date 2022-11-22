@@ -8,6 +8,11 @@ This application is a CMS-style blog site where anyone can sign up for an accoun
 
 ## Table of Contents
 
+- [Usage](#usage)
+- [License](#license)
+- [Credits](#credits)
+- [Questions](#questions)
+
 ## Usage
 
 [Click Here for Deployed Application](https://naveedtechblog.herokuapp.com/)
