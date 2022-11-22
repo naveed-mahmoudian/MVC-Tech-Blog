@@ -24,7 +24,8 @@ router.post("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   try {
     if (!req.session.loggedIn) {
-      res.redirect("/login");
+      // res.redirect("/login");
+      res.render("login");
     }
 
     const postData = await Post.findOne({
