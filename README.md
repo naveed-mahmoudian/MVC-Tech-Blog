@@ -20,7 +20,7 @@ This application is a CMS-style blog site where anyone can sign up for an accoun
 
 [Click Here for Deployed Application](https://naveedtechblog.herokuapp.com/)
 
-When you visit the homepage of the Tech Blog, you'll be able to see all blog posts posted by the various users of the application. If you try to visit your dashboard without being logged in, you will be redirected to the login page. If you do not have an account you can click the `Sign Up` button on the login page. When you are logged in you will be redirected to your dashboard and can create, edit, or delete your posts from there. To comment on a post, simply click the `Comment` button on the respective post and you'll be redirected to that specific posts's page where you can leave a comment and view other users comments.
+When you visit the homepage of the Tech Blog, you'll be able to see all blog posts posted by the various users of the application. If you try to visit your dashboard without being logged in, you will be redirected to the login page. If you do not have an account you can click the `Sign Up` button on the login page. When you are logged in you will be redirected to your dashboard and can create, edit, or delete your posts from there. To comment on a post, simply click the `Comment` button on the respective post and you'll be redirected to that specific posts's page where you can leave a comment and view other users comments. If you are inactive for 1 hour your session will expire and you'll be logged out automatically.
 
 ## Screenshots
 
